@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 
 import { db } from '../connection';
 
-const WeaponsModel = db.define(
+export const WeaponModel = db.define(
   'weapon',
   {
     id: {
@@ -21,12 +21,3 @@ const WeaponsModel = db.define(
     freezeTableName: true,
   },
 );
-
-export const Weapon = {
-  getAll: () =>
-    new Promise((resolve, reject) => {
-      WeaponsModel.findAll()
-        .then((weapons) => resolve(weapons))
-        .catch((error) => reject(error));
-    }),
-};

@@ -3,6 +3,8 @@ import type { PassiveItem, Weapon } from 'src/types';
 import { Container, Stack, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 
+import { WeaponModel, PassiveItemModel } from 'src/db/model';
+
 interface Props {
   weapons: Weapon[];
   passiveItems: PassiveItem[];
@@ -55,13 +57,13 @@ export default function Home({ weapons, passiveItems }: Props) {
 }
 
 export async function getServerSideProps() {
-  const weapons = await fetch('http://localhost:3000/api/weapons');
-  const passiveItems = await fetch('http://localhost:3000/api/passiveItems');
+  const weapons = await WeaponModel.findAll({ raw: true });
+  const passiveItems = await PassiveItemModel.findAll({ raw: true });
 
   return {
     props: {
-      weapons: await weapons.json(),
-      passiveItems: await passiveItems.json(),
+      weapons,
+      passiveItems,
     },
   };
 }

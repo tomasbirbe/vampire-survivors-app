@@ -1,2 +1,2 @@
-export { Weapon } from './Weapon.model';
-export { PassiveItem } from './PassiveItem.model';
+export { WeaponModel } from './Weapon.model';
+export { PassiveItemModel } from './PassiveItem.model';

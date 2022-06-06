@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 
 import { db } from '../connection';
 
-const PassiveItemModel = db.define(
+export const PassiveItemModel = db.define(
   'passive_item',
   {
     id: {
@@ -21,12 +21,3 @@ const PassiveItemModel = db.define(
     freezeTableName: true,
   },
 );
-
-export const PassiveItem = {
-  getAll: () =>
-    new Promise((resolve, reject) => {
-      PassiveItemModel.findAll()
-        .then((passiveItems) => resolve(passiveItems))
-        .catch((error) => reject(error));
-    }),
-};
